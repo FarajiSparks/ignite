@@ -1,4 +1,5 @@
 import React,{useEffect} from "react";
+import GameDetail from "../components/GameDetail";
 
 //Redux
 import {useDispatch, useSelector} from "react-redux";
@@ -21,11 +22,11 @@ const Home = () =>{
    
     const {popular, newGames, upcoming} = useSelector((state => state.games));
     
-    console.log(upcoming);
     return(
         <GameList>
+            <GameDetail/>
             <h3>Upcoming Games</h3>
-            <Games>{upcoming.map(game=>(
+            <Games>{upcoming?.map(game=>(
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}
@@ -34,7 +35,7 @@ const Home = () =>{
                         image={game.background_image}/>
             ))}</Games>
              <h3>Popular Games</h3>
-            <Games>{popular.map(game=>(
+            <Games>{popular?.map(game=>(
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}
@@ -43,7 +44,7 @@ const Home = () =>{
                         image={game.background_image}/>
             ))}</Games>
              <h3>New Games</h3>
-            <Games>{newGames.map(game=>(
+            <Games>{newGames?.map(game=>(
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}

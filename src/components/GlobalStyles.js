@@ -37,6 +37,11 @@ const GlobalStyles = createGlobalStyle`
     a{
         text-decoration:#333;
     }
+    p{
+        font-size:1rem;
+        line-height:200%;
+        color:#696969;
+    }
 `
 
 export default GlobalStyles;
