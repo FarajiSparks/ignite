@@ -9,13 +9,19 @@ import rootReducer from './reducers';
 import {Provider} from 'react-redux';
 import thunk from "redux-thunk";
 
+//Routing
+import {BrowserRouter} from 'react-router-dom'
+
+
 const store = configureStore({reducer:rootReducer}, {thunk});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+          <App />
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

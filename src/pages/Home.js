@@ -12,25 +12,32 @@ import Game from "../components/Game";
 import styled from "styled-components";
 import {motion} from "framer-motion";
 
-const Home = () =>{
+import { useLocation } from "react-router-dom";
 
+const Home = () =>{
+  
+
+    //Fetch Games
     const dispatch = useDispatch();
     useEffect(()=>{
       dispatch(loadGames());
     },[dispatch])
 
-   
+     //Get Current Location
+    const location = useLocation();
+    const pathId = location.pathname.split("/")[2];
+
     const {popular, newGames, upcoming} = useSelector((state => state.games));
     
     return(
         <GameList>
-            <GameDetail/>
+           { pathId && <GameDetail/> }
             <h3>Upcoming Games</h3>
             <Games>{upcoming?.map(game=>(
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}
-                        slug={game.slug}
+                        slug={game.slug.replace(/-/g, " ")}
                         released={game.released}
                         image={game.background_image}/>
             ))}</Games>
@@ -39,7 +46,7 @@ const Home = () =>{
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}
-                        slug={game.slug}
+                        slug={game.slug.replace(/-/g, " ")}
                         released={game.released}
                         image={game.background_image}/>
             ))}</Games>
@@ -48,7 +55,7 @@ const Home = () =>{
                 <Game key={game.id}
                         id={game.id}
                         name={game.name}
-                        slug={game.slug}
+                        slug={game.slug.replace(/-/g, " ")}
                         released={game.released}
                         image={game.background_image}/>
             ))}</Games>
@@ -61,6 +68,7 @@ const Home = () =>{
     h3{
         padding: 5rem 0rem;
     }
+
     `
 
     const Games = styled(motion.div)`

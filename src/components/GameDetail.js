@@ -27,12 +27,12 @@ return(
                     ))}</Platforms>
                 </Info>
             </Stats>
-            <div className="media">
+            <Media>
                 <img src={game.background_image} alt="game background" />
-            </div>
-            <div className="description">
+            </Media>
+            <Description>
                 <p>{game.description_raw}</p>
-            </div>
+            </Description>
             <div className="gallery">
                 {screen.results?.map((screen)=>(
                     <img src={screen.image} key={screen.id} alt="game"/>
@@ -60,7 +60,7 @@ const CardShadow = styled(motion.div)`
     &::-webkit-scrollbar-track{
              background:white ;
         }
-
+        z-index:-1;
     
 `;
 
@@ -100,6 +100,19 @@ h5{
 img{
     margin-left:3rem;
 }
+`
+
+const Media = styled(motion.div)`
+    margin-top:5rem;
+    img{
+        width:100%;
+        height:60vh;
+        object-fit:cover;
+    }
+`
+
+const Description = styled(motion.div)`
+    margin:5rem 0rem;
 `
 export default GameDetail
 

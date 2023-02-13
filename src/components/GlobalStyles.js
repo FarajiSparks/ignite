@@ -27,7 +27,7 @@ const GlobalStyles = createGlobalStyle`
     h4{
         font-size:1.3rem;
         color:#333;
-        padding: 1.5rem;
+        padding: 1.5rem 0rem;
     }
     h5{
         font-size:1rem;
