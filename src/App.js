@@ -3,12 +3,12 @@ import React from "react";
 //Components and Pages
 import Home from "./pages/Home";
 import GlobalStyles from "./components/GlobalStyles";
-import ErrorPage from "./components/ErrorPage";
+import Nav from './components/Nav';
 
 //Router
 import {Route, Routes} from 'react-router-dom';
 import GameDetail from "./components/GameDetail";
-
+import ErrorPage from "./components/ErrorPage";
 
 function App() {
  
@@ -17,16 +17,13 @@ function App() {
   return (
     <div>
     <GlobalStyles/>
-        <nav>
-          <div className="li">Home</div>
-          <div className="li">About</div>
-          <div className="li">Tings</div>
-        </nav>
+        <Nav/>
           <Routes> 
             <Route path="/" element ={<Home />}/>
             <Route path= "/game/:id" element ={<GameDetail />}/>
             <Route path ="*" element={<ErrorPage/>}/>
-          </Routes>
+          </Routes> 
+         
     </div>
   );
 }

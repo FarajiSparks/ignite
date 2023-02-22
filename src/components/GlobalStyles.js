@@ -42,6 +42,13 @@ const GlobalStyles = createGlobalStyle`
         line-height:200%;
         color:#696969;
     }
+    img{
+        display: block;
+    }
+    input{
+        font-weight:bold;
+        font-family: 'Montserrat', sans-serif ;
+    }
 `
 
 export default GlobalStyles;

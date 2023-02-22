@@ -27,11 +27,26 @@ const Home = () =>{
     const location = useLocation();
     const pathId = location.pathname.split("/")[2];
 
-    const {popular, newGames, upcoming} = useSelector((state => state.games));
+    const {popular, newGames, upcoming, searched} = useSelector((state => state.games));
+    
     
     return(
-        <GameList>
-           { pathId && <GameDetail/> }
+        <GameList>     
+            { pathId && <GameDetail pathId={pathId}/> }
+            {searched.length ? ( 
+                <div className="searched">
+                    <h3>Results</h3>
+                    <Games>{searched.map(game=>(
+                        <Game key={game.id}
+                                id={game.id}
+                                name={game.name}
+                                slug={game.slug.replace(/-/g, " ")}
+                                released={game.released}
+                                image={game.background_image}/>
+                    ))}</Games>
+                </div>
+            ) : ''} 
+
             <h3>Upcoming Games</h3>
             <Games>{upcoming?.map(game=>(
                 <Game key={game.id}
@@ -68,7 +83,6 @@ const Home = () =>{
     h3{
         padding: 5rem 0rem;
     }
-
     `
 
     const Games = styled(motion.div)`
